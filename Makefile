@@ -12,7 +12,7 @@ html/%.html: %.md style.css
 
 build_combine: 
 	./combine
-	/d/pandoc/bin/pandoc combined.md -s -c style.css --toc --metadata pagetitle="Robotics" --metadata title="Robotics" --mathjax -o html/combined.html
+	/d/pandoc/bin/pandoc combined.md -s -c style.css --toc --metadata pagetitle="Robotics" --metadata title="Robotics" --mathjax -o index.html
 	rm combined.md
 
 clean:
