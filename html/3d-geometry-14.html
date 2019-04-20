@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Describing rotation and translation in 3D</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Describing rotation and translation in 3D</h1>
+</header>
+<p>Pose has</p>
+<ul>
+<li>a <strong>translational</strong> component, and</li>
+<li>a <strong>rotational</strong> component</li>
+</ul>
+<p>It can be represented by</p>
+<ul>
+<li>vector + Euler angles</li>
+<li>vector + roll-pitch-yaw angles (fixed angles)</li>
+<li>vector + Quaternion</li>
+<li>Homogeneous transformation</li>
+</ul>
+<figure>
+<img src="images/3d-geometry-14-homo_trans.PNG" alt="homogeneous transform matrix" /><figcaption>homogeneous transform matrix</figcaption>
+</figure>
+<p>Using the rotation matrix avoids singularity’s, unlike the Euler and fixed angle approaches.</p>
+</body>
+</html>

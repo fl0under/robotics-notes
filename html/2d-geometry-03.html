@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Position and pose in 2D</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Position and pose in 2D</h1>
+</header>
+<p>It may not be enough to describe an objects position by just x and y coordinates, it is desirable to also have orientation. Can do this by attaching a coordinate frame to the object. Now the objects orientation is described by the orientation of the attached coordinate frame with respect to the reference (world) coordinate frame.</p>
+<p>Can describe the motion of an object in two steps:</p>
+<ul>
+<li><strong>Positional/Translational components</strong> Move from the reference coordinate frame to the object coordinate frame. First x, then y.</li>
+<li><strong>Rotational component</strong> Then rotate to match the objects coordinate frame.</li>
+</ul>
+<p>It is convention that the x-axis is in the direction of normal motion for the machine.</p>
+<h2 id="pose">Pose</h2>
+<p>May be represented with this symbol, pronounced ksi,</p>
+<p><span class="math display">\[\xi\]</span></p>
+<p>where <span class="math inline">\(\xi\)</span> is</p>
+<p><span class="math display">\[(x,y,\theta)\]</span></p>
+<p><span class="math inline">\(^{A}p_B\)</span> where p is the vector to point B with respect to (from) A.</p>
+<p><span class="math inline">\(^{A}\xi_B\)</span> where <span class="math inline">\(\xi\)</span> is the pose of B with respect to A.</p>
+<p>Use pose to describe a coordinate frame with respect to another coordinate frame. Use a vector to describe a point with respect to a coordinate frame.</p>
+</body>
+</html>

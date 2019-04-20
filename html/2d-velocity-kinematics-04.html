@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Inverting the Jacobian Matrix</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Inverting the Jacobian Matrix</h1>
+</header>
+<p>Given the end-effector velocity, what are the joint velocities?</p>
+<p><span class="math inline">\(\dot{q} = \mathbf{J}(q)^{-1}v\)</span></p>
+<p>The Jacobian can only be inverted if it is</p>
+<ul>
+<li><p><strong>square</strong>: the robot’s task and configuration spaces are equal, and</p></li>
+<li><p><strong>non-singular</strong>: the robot’s joint coordinates avoid certain “singular” configurations.</p></li>
+</ul>
+<h3 id="singular-jacobian-matrix">Singular Jacobian matrix</h3>
+<p>A singular Jacobian matrix indicates that the end-effector motion is unable to move in or rotate about a particular Cartesian direction. (loss of a DOF)</p>
+<h4 id="close-to-singular">Close to singular</h4>
+<p>A pose may be <em>nearly</em> singular, making movement in some directions difficult.</p>
+<p>Can be determined by the Jacobian determinant or the Jacobian condition number.</p>
+<p>A small determinant corresponds to a large condition number, that is, the matrix is nearly singular.</p>
+</body>
+</html>

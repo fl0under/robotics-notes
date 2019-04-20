@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Describing rotation in 2D</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Describing rotation in 2D</h1>
+</header>
+<p><img src="images/2d-geometry-07-understanding.png" /></p>
+<p>Here <span class="math inline">\(^Ap\)</span> and <span class="math inline">\(^Bp\)</span> share an origin and so are the same. Equating these two gives</p>
+<p><img src="images/2d-geometry-07-equate.png" /></p>
+<p>which can be written in matrix form like</p>
+<p><img src="images/2d-geometry-07-matrix.png" /></p>
+<p>which can be more concisely written as</p>
+<p><span class="math display">\[^A\boldsymbol{p} = \mathbf{R} ^B\boldsymbol{p} \qquad\text{ where
+} \mathbf{R} = \begin{pmatrix} \cos{\theta} &amp; -\sin{\theta} \\ \sin{\theta}
+&amp; \cos{\theta} \end{pmatrix}\]</span></p>
+<p>but write it using the notation</p>
+<p><span class="math display">\[^A\boldsymbol{p} =\ ^A\mathbf{R}_B \  ^B\boldsymbol{p} \qquad\text{
+where } ^A\mathbf{R}_B = \begin{pmatrix} \cos{\theta} &amp; -\sin{\theta} \\
+\sin{\theta} &amp; \cos{\theta} \end{pmatrix}\]</span></p>
+<p>So <strong>R</strong> is a rotation matrix that</p>
+<ul>
+<li>rotates vectors from frame {B} to frame {A}</li>
+<li>is a function of rotation angle from frame {A} to frame {B}</li>
+</ul>
+<h3 id="properties-of-the-rotation-matrix">Properties of the rotation matrix</h3>
+<ul>
+<li>Is an orthogonal (orthonormal) matrix
+<ul>
+<li>Each column is a unit vector</li>
+<li>Each column is orthogonal to all other columns
+<ul>
+<li>the dot product of the two columns is zero</li>
+</ul></li>
+</ul></li>
+<li>The inverse is the same as the transpose <span class="math inline">\(\boldsymbol{R}^{-1} = \boldsymbol{R}^T\)</span></li>
+<li>The determinant is 1
+<ul>
+<li>Multiply any vector by the rotation matrix and the length of the vector is unchanged
+<ul>
+<li>so when rotating a vector from one coordinate frame to another, its length is not changed</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="inverse-rotation">Inverse rotation</h3>
+<p>To rotate a vector from frame {A} to frame {B} we use the inverse rotation matrix, which for a rotation matrix is simply the transpose.</p>
+<p>Also note the equivalence</p>
+<p><span class="math display">\[^B\boldsymbol{R}_A =\ ^A\boldsymbol{R}^{-1}_B\]</span></p>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Reachability and Singularity</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Reachability and Singularity</h1>
+</header>
+<h2 id="reachability">Reachability</h2>
+<p>Robot may not be able to reach the requested pose</p>
+<ul>
+<li>Numerical algorithm may fail to converge</li>
+<li>Analytic approach may try computing square root of a negative number or the inverse cosine of a number whose magnitude is greater than 1</li>
+</ul>
+<h2 id="singularity">Singularity</h2>
+<p>Related to the Gimbal lock problem.</p>
+<p>If particular axes are aligned, can loose a degree of freedom, affecting the robots ability to reach some positions.</p>
+</body>
+</html>

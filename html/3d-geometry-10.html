@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Singularity in 3D rotation angles sequences</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Singularity in 3D rotation angles sequences</h1>
+</header>
+<p>Also known as <strong>Gimbal lock</strong>.</p>
+<p>A Gimbal is a mechanism used to stabilise some device to space.</p>
+<figure>
+<img src="images/3d-geometry-10-gimbal.PNG" alt="Examples of Gimbals" /><figcaption>Examples of Gimbals</figcaption>
+</figure>
+<p>Gimbal lock is when two of the axis become aligned.</p>
+<p>For roll-pitch-yaw angles, Gimbal lock occurs when pitch is at <span class="math inline">\(\pi/2\)</span>. Results in rotation axes of the first and third rotations (roll and yaw) parallel.</p>
+<p>For example, the set of roll-pitch-yaw angles (30, 90, -20)° is equivalent to the set (0, 90, 10)°. A pitch of 90° results in Gimbal lock, whereby the roll and yaw axes become aligned, and thus rotations about these axes can be summed and by convention assigned to the yaw angle.</p>
+<p>To minimise Gimbal lock, choose coordinate conventions so that the pitch angle is around 0 for normal operating conditions.</p>
+</body>
+</html>

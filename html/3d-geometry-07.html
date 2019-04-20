@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Describing rotation in 3D</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Describing rotation in 3D</h1>
+</header>
+<h3 id="rotation-in-3d">Rotation in 3D</h3>
+<p>Frames {A} and {B} share the same origin.</p>
+<p><img src="images/3d-geometry-07-transform.PNG" /></p>
+<h3 id="properties-of-the-rotation-matrix">Properties of the rotation matrix</h3>
+<ul>
+<li>Is an orthogonal (orthonormal) matrix
+<ul>
+<li>Each column is a unit vector</li>
+<li>Each column is orthogonal to all other columns
+<ul>
+<li>the dot product of the two columns is zero</li>
+</ul></li>
+</ul></li>
+<li>The inverse is the same as the transpose <span class="math inline">\(\boldsymbol{R}^{-1} = \boldsymbol{R}^T\)</span></li>
+<li>The determinant is 1
+<ul>
+<li>Multiply any vector by the rotation matrix and the length of the vector is unchanged
+<ul>
+<li>so when rotating a vector from one coordinate frame to another, its length is not changed</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="elementary-rotation-matrices">Elementary rotation matrices</h3>
+<p>For rotation about either the x, y or z axis.</p>
+<p>Multiplying these in various combinations will achieve much more complicated rotations.</p>
+<p><img src="images/3d-geometry-07-elementary.PNG" /></p>
+</body>
+</html>

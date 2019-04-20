@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Angle-axis representation of rotation in 3D</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Angle-axis representation of rotation in 3D</h1>
+</header>
+<p>The orientation of a body in 3D can also be described by a single rotation about a particular axis in space.</p>
+<p>Need to know the axis of rotation vector <span class="math inline">\(\boldsymbol{v}\)</span>, and the angle of rotation about the vector <span class="math inline">\(\boldsymbol{\theta}\)</span>.</p>
+<h3 id="finding-the-axis">Finding the axis</h3>
+<p>We observe that the axis around which the rotation occurs must be unchanged by the rotation, therefore the rotation axis must be an eigenvector of <span class="math inline">\(\boldsymbol{R}\)</span>.</p>
+<p>A rotation matrix has three eigenvectors:</p>
+<ul>
+<li>one real eigenvector corresponding to an eigenvalue of 1</li>
+<li>two complex eigenvectors with eigenvalues <span class="math inline">\(\lambda = \cos{\theta} \pm i \sin{\theta}\)</span> where <span class="math inline">\(\theta\)</span> is the rotation angle</li>
+</ul>
+<h3 id="finding-the-rotation-matrix">Finding the rotation matrix</h3>
+<p>If you know <span class="math inline">\(\theta\)</span> and the eigenvector, then the rotation matrix can be found using the Rodrigues equation.</p>
+<p><img src="images/3d-geometry-12-skew.PNG" /></p>
+</body>
+</html>

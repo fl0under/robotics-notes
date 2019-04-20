@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Velocity of 2-Joint Planar Robot Arm</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Velocity of 2-Joint Planar Robot Arm</h1>
+</header>
+<ol type="1">
+<li><p>Find the expression for x and y (as a function of the joint angles) just like in when finding the inverse kinematics.</p></li>
+<li><p>Make the joint angles functions of time</p></li>
+<li><p>Take the derivative of x and y</p></li>
+<li><p>Factor out the <span class="math inline">\(\dot{q_1}\)</span> and <span class="math inline">\(\dot{q_2}\)</span> so the equation is in matrix form</p></li>
+<li><p>This can be written as <span class="math inline">\(v = \mathbf{J}(q)\dot{q}\)</span></p>
+<ul>
+<li><p><span class="math inline">\(v\)</span> is the tip velocity</p></li>
+<li><p><span class="math inline">\(\mathbf{J}(q)\)</span> is the Jacobian matrix</p></li>
+</ul></li>
+</ol>
+<h3 id="the-jacobian">The Jacobian</h3>
+<p>The Jacobian is the matrix equivalent of the derivative.</p>
+<p><img src="images/2d-velocity-kinematics-03-Jacobian.PNG" /></p>
+<p>Here the Jacobian is a function of the joint angles and the kinematic parameters of the robot.</p>
+<h3 id="spatial-velocity">Spatial Velocity</h3>
+<p>Greek letter nu, <span class="math inline">\(nu\)</span></p>
+<ul>
+<li>Used to denote the robot tool velocity (including rotation)</li>
+<li>The end-effector spatial velocity is the product of the manipulator Jacobian matrix and the joint velocity vector.</li>
+</ul>
+</body>
+</html>

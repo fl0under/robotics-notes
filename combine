@@ -1,0 +1,15 @@
+#!/bin/bash
+
+order=( 2d-geometry*.md 3d-geometry*.md inverse-kinematics*.md 2d-velocity-kinematics*.md )
+
+rm -f combined.md
+
+for i in "${order[@]}"
+do
+  for f in $i
+  do
+    # Convert yaml title to # and add a seperater after each file
+    (echo "" ; echo "---" ; echo ""; cat $f | sed 's/---//g' | sed -r "s/title: '(.*)'$/# \1/") >> combined.md
+  done
+done
+

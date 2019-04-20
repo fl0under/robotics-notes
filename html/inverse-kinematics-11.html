@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Joint Interpolated Motion</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Joint Interpolated Motion</h1>
+</header>
+<p>How to smoothly move from one pose to another.</p>
+<p>Simple approach.</p>
+<ul>
+<li>Determine the joint angles at start and end pose
+<ul>
+<li>interpolate between them</li>
+</ul></li>
+</ul>
+<p>No constraints on the path except for the start and end points</p>
+<ul>
+<li>May result in translations or orientations changing throughout the path even when its start and end positions are the same. (not a straight line or constant orientation)</li>
+</ul>
+</body>
+</html>

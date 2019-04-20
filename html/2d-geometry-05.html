@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Relative pose in 2D</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Relative pose in 2D</h1>
+</header>
+<p>Relative poses can be <strong>compounded</strong> or <strong>composed</strong> i.e. they can be ‘added’.</p>
+<p>We use the symbol <span class="math inline">\(\oplus\)</span> for this, e.g.</p>
+<p><span class="math display">\[^A\xi_C = ^A\xi_B \oplus ^B\xi_C\]</span></p>
+<p>You can use a <strong>pose graph</strong> to better display and easily compute the relationships between the all of the poses. A pose graph is a directed graph, with solid edges between coordinate frames (nodes) indicating that the pose is known, and a dotted line indicating that the pose is unknown but perhaps it may be computed.</p>
+<p>You can define an unknown pose with a composition of the known poses.</p>
+<p>If when finding a pose it is necessary to travel backwards (in the reverse direction) in the graph, that may be represented using the symbol <span class="math inline">\(\ominus\)</span>.</p>
+<h2 id="a-few-rules">A few rules</h2>
+<p><span class="math display">\[^X\xi_Y \oplus ^Y\xi_Z = ^X\xi_Z\]</span></p>
+<p><span class="math display">\[^Xp = ^X\xi_Y \cdot ^Yp\]</span></p>
+<p><span class="math display">\[\xi_1 \oplus \xi_2 \neq \xi_2 \oplus \xi_1\]</span></p>
+<p><span class="math display">\[\ominus ^X\xi_Y = ^Y\xi_X\]</span></p>
+<span class="math display">\[\begin{aligned}
+\xi \ominus \xi &amp;= 0   &amp;   \ominus \xi \oplus \xi &amp;= 0 \\
+\xi \ominus 0 &amp;= \xi   &amp;   \xi \oplus 0 &amp;= \xi
+\end{aligned}\]</span>
+</body>
+</html>

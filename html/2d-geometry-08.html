@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Describing rotation and translation in 2D</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Describing rotation and translation in 2D</h1>
+</header>
+<p><img src="images/2d-geometry-08-homo.png" /></p>
+<p>t is for translation.</p>
+<p>I think a 3x3 matrix is preferred in the last step because then you can take the inverse (the zeros and ones in that last row are constant).</p>
+<p><img src="images/2d-geometry-08-homo2.png" /></p>
+<p><img src="images/2d-geometry-08-p.png" /></p>
+<p>Remember the order when transforming:</p>
+<p><img src="images/2d-geometry-08-order.PNG" /></p>
+<h2 id="pose">Pose</h2>
+<p>Pose is a matrix <span class="math inline">\(^A\xi_B \sim\ ^A\boldsymbol{T}_B\)</span></p>
+<p>Compounding (composition) (<span class="math inline">\(\oplus\)</span>) is a matrix-matrix product.</p>
+<p>Negation (<span class="math inline">\(\ominus\)</span>) is a matrix inverse.</p>
+<p>Vector transformation (<span class="math inline">\(\cdot\)</span>) is a matrix-vector product.</p>
+<p><span class="math display">\[\xi\cdot p \rightarrow \boldsymbol{T} \widetilde{p}\]</span></p>
+</body>
+</html>
