@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Velocity Ellipse in 2D</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Velocity Ellipse in 2D</h1>
+</header>
+<p>The velocity ellipse describes the ease in which the robot arm may move in either direction.</p>
+<ul>
+<li>The short axis indicates the direction in which the end-effector can move least quickly</li>
+<li>Conversely, the long axis is the direction in which it can move most quickly</li>
+</ul>
+<p>A narrow ellipse means the robot is close to a singularity.</p>
+<p>It can be described by the equation <span class="math display">\[\nu^T (\mathbf{J}(\mathbf{q})\mathbf{J}^T(\mathbf{q}))^{-1} \nu = 1\]</span> Where <span class="math display">\[\nu=(\dot{x},\dot{y})\]</span> and <span class="math display">\[\mathbf{\dot{q}}=(\dot{q_1},\dot{q_2})\]</span> <span class="math display">\[\mathbf{\dot{q}}=\mathbf{J}(\mathbf{q})^{-1}\nu\]</span></p>
+<p><img src="images/2d-velocity-kinematics-05-intuition.PNG" /></p>
+<p>Moving faster in the y direction than x.</p>
+</body>
+</html>

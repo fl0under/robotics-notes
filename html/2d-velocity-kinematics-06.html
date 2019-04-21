@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Resolved Rate Motion Control in 2D</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Resolved Rate Motion Control in 2D</h1>
+</header>
+<p>Resolved-rate motion control is a technique to move the end-effector at a specified velocity without having to compute inverse kinematics.</p>
+<ol type="1">
+<li><p>Choose the Cartesian velocity <span class="math inline">\(\nu\)</span></p></li>
+<li><p>Find the joint velocities using the inverse Jacobian</p></li>
+<li><p>Move the joints at that speed</p>
+<ul>
+<li>i.e. Find the next joint configuration <span class="math inline">\(\mathbf{q}_{k+1} = \mathbf{q}_k + \Delta_t \mathbf{\dot{q}}\)</span> and send that to the robots hardware</li>
+</ul></li>
+<li><p>At the next time step, update the Jacobian as it is a function of the joint angles, which have now changed</p></li>
+<li><p>Goto step 2</p></li>
+</ol>
+<p>This technique may or may not be less computationally expensive than computing the inverse kinematics at every step.</p>
+</body>
+</html>
