@@ -69,6 +69,8 @@
 <li><a href="#inverting-the-jacobian-matrix">Inverting the Jacobian Matrix</a></li>
 <li><a href="#velocity-ellipse-in-2d">Velocity Ellipse in 2D</a></li>
 <li><a href="#resolved-rate-motion-control-in-2d">Resolved Rate Motion Control in 2D</a></li>
+<li><a href="#velocity-of-3-joint-planar-robot-arm">Velocity of 3-Joint Planar Robot Arm</a></li>
+<li><a href="#mapping-2d-spatial-velocity-between-coordinate-frames">Mapping 2D Spatial Velocity Between Coordinate Frames</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -538,5 +540,26 @@ where } ^A\mathbf{R}_B = \begin{pmatrix} \cos{\theta} &amp; -\sin{\theta} \\
 <li><p>Goto step 2</p></li>
 </ol>
 <p>This technique may or may not be less computationally expensive than computing the inverse kinematics at every step.</p>
+<hr />
+<h2 id="velocity-of-3-joint-planar-robot-arm">Velocity of 3-Joint Planar Robot Arm</h2>
+<p>Remember a 3-joint planar arm is able to control its orientation independently of its position.</p>
+<p>Find the forward kinematics transform matrix, then</p>
+<ul>
+<li>take the derivative of the translation part and arrange in matrix form,</li>
+<li>then do the same for the rotational part,</li>
+<li>stack them together and you have the 3x3 Jacobian matrix multiplied by the joint velocity vector equals the spatial velocity.</li>
+</ul>
+<p><img src="images/2d-velocity-kinematics-07-spatial.PNG" /></p>
+<p>Therefore</p>
+<p><img src="images/2d-velocity-kinematics-07-tool.PNG" /></p>
+<p>Also note</p>
+<ul>
+<li>the number of <strong>rows</strong> of the Jacobian matrix is equal to the dimension of the robot’s <strong>task</strong> space,</li>
+<li>and the number of <strong>columns</strong> of the Jacobian matrix is equal to the dimension of the robot’s <strong>configuration</strong> space.</li>
+</ul>
+<hr />
+<h2 id="mapping-2d-spatial-velocity-between-coordinate-frames">Mapping 2D Spatial Velocity Between Coordinate Frames</h2>
+<p>The velocity of a point relative to coordinate frame A is related to its velocity relative to frame B by a Jacobian which is a function of the rotation from frame B to frame A.</p>
+<p><img src="images/2d-velocity-kinematics-08-coord.PNG" /></p>
 </body>
 </html>
