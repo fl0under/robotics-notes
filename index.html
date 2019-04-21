@@ -41,6 +41,16 @@
 <li><a href="#angle-axis-representation-of-rotation-in-3d">Angle-axis representation of rotation in 3D</a></li>
 <li><a href="#describing-rotation-and-translation-in-3d">Describing rotation and translation in 3D</a></li>
 </ul></li>
+<li><a href="#forward-kinematics">Forward Kinematics</a><ul>
+<li><a href="#types-of-robots">Types of Robots</a></li>
+<li><a href="#analysing-a-very-simple-1-joint-robot-arm">Analysing a very simple 1-joint robot arm</a></li>
+<li><a href="#analysing-a-2-joint-planar-robot-arm">Analysing a 2-joint planar robot arm</a></li>
+<li><a href="#analysing-a-3-joint-planar-robot-arm">Analysing a 3-joint planar robot arm</a></li>
+<li><a href="#analysing-a-robot-arm-that-moves-in-3d">Analysing a robot arm that moves in 3D</a></li>
+<li><a href="#task-and-configuration-space">Task and Configuration space</a></li>
+<li><a href="#denavit-hartenberg-notation">Denavit-Hartenberg notation</a></li>
+<li><a href="#base-and-tool-transforms">Base and tool transforms</a></li>
+</ul></li>
 <li><a href="#inverse-kinematics">Inverse Kinematics</a><ul>
 <li><a href="#inverse-kinematics-for-a-2-joint-robot-arm-using-geometry">Inverse Kinematics for a 2-Joint Robot Arm Using Geometry</a></li>
 <li><a href="#inverse-kinematics-for-a-2-joint-robot-arm-using-algebra">Inverse Kinematics for a 2-Joint Robot Arm Using Algebra</a></li>
@@ -309,6 +319,86 @@ where } ^A\mathbf{R}_B = \begin{pmatrix} \cos{\theta} &amp; -\sin{\theta} \\
 <img src="images/3d-geometry-14-homo_trans.PNG" alt="homogeneous transform matrix" /><figcaption>homogeneous transform matrix</figcaption>
 </figure>
 <p>Using the rotation matrix avoids singularity’s, unlike the Euler and fixed angle approaches.</p>
+<h1 id="forward-kinematics">Forward Kinematics</h1>
+<hr />
+<h2 id="types-of-robots">Types of Robots</h2>
+<p>A serial-link manipulator consists of a series of joints, each connected by a rigid link to the following joint.</p>
+<p>A parallel-link manipulator consists of one or more joints on the base, each connected by a rigid link to the end-effector.</p>
+<p>Other types: SCARA robot (Selective Compliance Articulating Robot), Gantry robot - overhead (x,y,z).</p>
+<p>Robotic joints can either rotate or slide</p>
+<ul>
+<li>rotate - revolute joint</li>
+<li>slide - prismatic joint</li>
+</ul>
+<hr />
+<h2 id="analysing-a-very-simple-1-joint-robot-arm">Analysing a very simple 1-joint robot arm</h2>
+<p>Get to the end effector frame by rotating and translating the reference coordinate frame.</p>
+<p><img src="images/forward-kinematics-03-arm.png" /></p>
+<p>Both position and angle is a function of the angle <span class="math inline">\(q_1\)</span> and so the position and angle cannot be set independently.</p>
+<p>i.e. can move to any point lying on a circle</p>
+<hr />
+<h2 id="analysing-a-2-joint-planar-robot-arm">Analysing a 2-joint planar robot arm</h2>
+<p>Same as for 1-joint, the orientation of the end effector is not independent from its position in the xy plane.</p>
+<p>Always two joint angle configurations that result in the same end effector position.</p>
+<p><img src="images/forward-kinematics-04-arm.png" /></p>
+<hr />
+<h2 id="analysing-a-3-joint-planar-robot-arm">Analysing a 3-joint planar robot arm</h2>
+<p>Unlike the 1 and 2 joint planar robotic arm, the orientation and position of the end effector are independent.</p>
+<p>There are an infinite number of joint configurations that result in an end-effector position.</p>
+<p><img src="images/forward-kinematics-05-arm.png" /></p>
+<hr />
+<h2 id="analysing-a-robot-arm-that-moves-in-3d">Analysing a robot arm that moves in 3D</h2>
+<p>To find the end-effectors pose, the process is much the same as for a planar robot arm, multiply a bunch of rotation and translation matrices.</p>
+<p>First identify the joints of the robot. Then a good way to figure out the order of the multiplications is to imagine the grippers/end-effector of the robot pointing up, coming out of the base of robot. Then imagine the rotations and translations as the end-effector approaches each joint.</p>
+<hr />
+<h2 id="task-and-configuration-space">Task and Configuration space</h2>
+<h3 id="configuration-space">Configuration Space</h3>
+<p>q (<em>joint configuration</em>) is a vector of length N (<em>number of joints</em>) where the elements of q (<em>joint coordinate</em>) are either an angle or a length.</p>
+<p>q belongs to the space C (<em>space of all possible configurations</em>), which is a subset of the N dimensional space.</p>
+<p><img src="images/forward-kinematics-08-joints.png" /></p>
+<h3 id="task-space">Task Space</h3>
+<p>There is also the space of all possible end-effector poses, T.</p>
+<h3 id="task-and-configuration-space-dimensions">Task and Configuration Space Dimensions</h3>
+<p>The dimension of the configuration space is the <em>robots</em> degrees of freedom, i.e. the number of joints.</p>
+<p>The dimension of the task space is the degrees of freedom in the task space.</p>
+<p>In the three dimensional world (that we and our robots live), it is not possible to have a task space bigger than six.</p>
+<p><strong>To reach all of the task space</strong> dim C <span class="math inline">\(&gt;=\)</span> dim T</p>
+<h3 id="redundant-robot">Redundant Robot</h3>
+<p>When dim C &gt; dim T (epically when dim C &gt;&gt; dim T), the shape of the arm can be controlled as well as the position/orientation of the end-effector.</p>
+<hr />
+<h2 id="denavit-hartenberg-notation">Denavit-Hartenberg notation</h2>
+<p>A general theory to describe an articulated sequence of joints.</p>
+<p>Each joint in the robot is described by four parameters.</p>
+<p>Denavit-Hartenberg notation describes the relationship between 3D coordinate frames attached to two successive links with four parameters.</p>
+<p>For a robot with N joints the links are numbered from 0 to N, where link 0 is the fixed base of the robot.</p>
+<ul>
+<li><p>A coordinate frame is attached to the far (distal) end of every link (closest to the end-effector)</p></li>
+<li><p>The pose of a link frame is described with respect to the previous link frame</p></li>
+<li><p>Four parameters: <span class="math inline">\(\theta, d, a, \alpha\)</span></p></li>
+</ul>
+<p><img src="images/forward-kinematics-09-diagram.png" /> <img src="images/forward-kinematics-09-equation.png" /></p>
+<h3 id="how-only-4-parameters-when-a-pose-has-6-parameters">How only 4 parameters when a pose has 6 parameters?</h3>
+<p>There are constraints when using Denavit-Hartenberg notation:</p>
+<ul>
+<li><p>Axis <span class="math inline">\(x_j\)</span> intersects axis <span class="math inline">\(z_(j-1)\)</span></p></li>
+<li><p>Axis <span class="math inline">\(x_j\)</span> is perpendicular to axis <span class="math inline">\(z_(j-1)\)</span></p></li>
+</ul>
+<p>6 parameters - 2 constraints = 4 parameters</p>
+<p>Note that because of these constraints, a link coordinate frame may not necessarily lie on the physical robot.</p>
+<h3 id="the-joint-axis">The Joint Axis</h3>
+<p>The axis of each joint is defined by the z-axis of a coordinate frame</p>
+<ul>
+<li><p>The joint <strong>rotates</strong> about the z-axis (revoltue joint), or</p></li>
+<li><p>The joint translates along the z-axis (prismatic joint)</p></li>
+</ul>
+<h3 id="parameter-table">Parameter Table</h3>
+<p>A table is used to represent each of the DH parameters for each joint.</p>
+<p>A good way to remember how to find each of the parameters is to use the following table.</p>
+<p><img src="images/foward-kinematics-09-tutorial.png" /></p>
+<hr />
+<h2 id="base-and-tool-transforms">Base and tool transforms</h2>
+<p>In reality, we want the end point of the robot to be the end of whatever tool is attached to the robot. Need to apply a tool transform to the end pose of the robot.</p>
+<p>Also can apply a <em>base</em> transform to reposition or reorient the robot in space, i.e. flip the robot upside down etc.</p>
 <h1 id="inverse-kinematics">Inverse Kinematics</h1>
 <hr />
 <h2 id="inverse-kinematics-for-a-2-joint-robot-arm-using-geometry">Inverse Kinematics for a 2-Joint Robot Arm Using Geometry</h2>

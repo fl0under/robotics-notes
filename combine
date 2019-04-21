@@ -1,6 +1,6 @@
 #!/bin/bash
 
-order=( "2d-geometry*.md" "3d-geometry*.md" "inverse-kinematics*.md" "2d-velocity-kinematics*.md" )
+order=( "2d-geometry*.md" "3d-geometry*.md" "forward-kinematics*.md" "inverse-kinematics*.md" "2d-velocity-kinematics*.md" )
 
 rm -f combined.md
 
