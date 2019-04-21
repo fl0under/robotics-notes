@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Velocity of 3-Joint Planar Robot Arm</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Velocity of 3-Joint Planar Robot Arm</h1>
+</header>
+<p>Remember a 3-joint planar arm is able to control its orientation independently of its position.</p>
+<p>Find the forward kinematics transform matrix, then</p>
+<ul>
+<li>take the derivative of the translation part and arrange in matrix form,</li>
+<li>then do the same for the rotational part,</li>
+<li>stack them together and you have the 3x3 Jacobian matrix multiplied by the joint velocity vector equals the spatial velocity.</li>
+</ul>
+<p><img src="images/2d-velocity-kinematics-07-spatial.PNG" /></p>
+<p>Therefore</p>
+<p><img src="images/2d-velocity-kinematics-07-tool.PNG" /></p>
+<p>Also note</p>
+<ul>
+<li>the number of <strong>rows</strong> of the Jacobian matrix is equal to the dimension of the robot’s <strong>task</strong> space,</li>
+<li>and the number of <strong>columns</strong> of the Jacobian matrix is equal to the dimension of the robot’s <strong>configuration</strong> space.</li>
+</ul>
+</body>
+</html>
