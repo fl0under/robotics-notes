@@ -26,4 +26,4 @@ In the three dimensional world (that we and our robots live), it is not possible
 
 ## Redundant Robot
 
-When dim C > dim T (epically when dim C >> dim T), the shape of the arm can be controlled as well as the position/orientation of the end-effector.
+When dim C > dim T (especially when dim C >> dim T), the shape of the arm can be controlled as well as the position/orientation of the end-effector.
