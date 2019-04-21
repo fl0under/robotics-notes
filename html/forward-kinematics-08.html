@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Task and Configuration space</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Task and Configuration space</h1>
+</header>
+<h2 id="configuration-space">Configuration Space</h2>
+<p>q (<em>joint configuration</em>) is a vector of length N (<em>number of joints</em>) where the elements of q (<em>joint coordinate</em>) are either an angle or a length.</p>
+<p>q belongs to the space C (<em>space of all possible configurations</em>), which is a subset of the N dimensional space.</p>
+<p><img src="images/forward-kinematics-08-joints.png" /></p>
+<h2 id="task-space">Task Space</h2>
+<p>There is also the space of all possible end-effector poses, T.</p>
+<h2 id="task-and-configuration-space-dimensions">Task and Configuration Space Dimensions</h2>
+<p>The dimension of the configuration space is the <em>robots</em> degrees of freedom, i.e. the number of joints.</p>
+<p>The dimension of the task space is the degrees of freedom in the task space.</p>
+<p>In the three dimensional world (that we and our robots live), it is not possible to have a task space bigger than six.</p>
+<p><strong>To reach all of the task space</strong> dim C <span class="math inline">\(&gt;=\)</span> dim T</p>
+<h2 id="redundant-robot">Redundant Robot</h2>
+<p>When dim C &gt; dim T (epically when dim C &gt;&gt; dim T), the shape of the arm can be controlled as well as the position/orientation of the end-effector.</p>
+</body>
+</html>

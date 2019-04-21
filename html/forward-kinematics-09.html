@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Denavit-Hartenberg notation</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Denavit-Hartenberg notation</h1>
+</header>
+<p>A general theory to describe an articulated sequence of joints.</p>
+<p>Each joint in the robot is described by four parameters.</p>
+<p>Denavit-Hartenberg notation describes the relationship between 3D coordinate frames attached to two successive links with four parameters.</p>
+<p>For a robot with N joints the links are numbered from 0 to N, where link 0 is the fixed base of the robot.</p>
+<ul>
+<li><p>A coordinate frame is attached to the far (distal) end of every link (closest to the end-effector)</p></li>
+<li><p>The pose of a link frame is described with respect to the previous link frame</p></li>
+<li><p>Four parameters: <span class="math inline">\(\theta, d, a, \alpha\)</span></p></li>
+</ul>
+<p><img src="images/forward-kinematics-09-diagram.png" /> <img src="images/forward-kinematics-09-equation.png" /></p>
+<h2 id="how-only-4-parameters-when-a-pose-has-6-parameters">How only 4 parameters when a pose has 6 parameters?</h2>
+<p>There are constraints when using Denavit-Hartenberg notation:</p>
+<ul>
+<li><p>Axis <span class="math inline">\(x_j\)</span> intersects axis <span class="math inline">\(z_(j-1)\)</span></p></li>
+<li><p>Axis <span class="math inline">\(x_j\)</span> is perpendicular to axis <span class="math inline">\(z_(j-1)\)</span></p></li>
+</ul>
+<p>6 parameters - 2 constraints = 4 parameters</p>
+<p>Note that because of these constraints, a link coordinate frame may not necessarily lie on the physical robot.</p>
+<h2 id="the-joint-axis">The Joint Axis</h2>
+<p>The axis of each joint is defined by the z-axis of a coordinate frame</p>
+<ul>
+<li><p>The joint <strong>rotates</strong> about the z-axis (revoltue joint), or</p></li>
+<li><p>The joint translates along the z-axis (prismatic joint)</p></li>
+</ul>
+<h2 id="parameter-table">Parameter Table</h2>
+<p>A table is used to represent each of the DH parameters for each joint.</p>
+<p>A good way to remember how to find each of the parameters is to use the following table.</p>
+<p><img src="images/foward-kinematics-09-tutorial.png" /></p>
+</body>
+</html>
