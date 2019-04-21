@@ -45,4 +45,4 @@ A table is used to represent each of the DH parameters for each joint.
 
 A good way to remember how to find each of the parameters is to use the following table.
 
-![](images/foward-kinematics-09-tutorial.png)
+![](images/forward-kinematics-09-tutorial.png)

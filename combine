@@ -1,13 +1,13 @@
 #!/bin/bash
 
-order=( "2d-geometry*.md" "3d-geometry*.md" "forward-kinematics*.md" "inverse-kinematics*.md" "2d-velocity-kinematics*.md" )
+order=( "2d-geometry*.md" "3d-geometry*.md" "forward-kinematics*.md" "inverse-kinematics*.md" "2d-velocity-kinematics*.md" "3d-velocity-kinematics*.md" )
 
 rm -f combined.md
 
 for i in "${order[@]}"
 do
   # Add in title of each section. Get first file name, remove dash, and capatilise.
-  (echo $i | sed -r 's/-...md(.*)//' | sed 's/-/ /g'| sed 's/\<./\U&/g' | sed -r 's/(^.)d/\1D/' | sed -r 's/^(.*)/\n# &/') >> combined.md
+  (echo $i | sed -r 's/-...md(.*)//' | sed 's/-/ /g'| sed 's/\<./\U&/g' | sed -r 's/(^.)d/\1D/' | sed -r 's/^(.*)/\n\n---\n\n# &/') >> combined.md
   for f in $i
   do
     # Convert yaml title to # and add a seperater after each file

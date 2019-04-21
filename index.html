@@ -72,8 +72,14 @@
 <li><a href="#velocity-of-3-joint-planar-robot-arm">Velocity of 3-Joint Planar Robot Arm</a></li>
 <li><a href="#mapping-2d-spatial-velocity-between-coordinate-frames">Mapping 2D Spatial Velocity Between Coordinate Frames</a></li>
 </ul></li>
+<li><a href="#d-velocity-kinematics-1">3D Velocity Kinematics</a><ul>
+<li><a href="#motion-in-3d">Motion in 3D</a></li>
+<li><a href="#velocity-of-6-joint-robot-arm---translation">Velocity of 6-Joint Robot Arm - Translation</a></li>
+<li><a href="#skew-symmetric-matrices">Skew Symmetric Matrices</a></li>
+</ul></li>
 </ul>
 </nav>
+<hr />
 <h1 id="d-geometry">2D Geometry</h1>
 <hr />
 <h2 id="d-geometry-refresher">2D Geometry Refresher</h2>
@@ -214,6 +220,7 @@ where } ^A\mathbf{R}_B = \begin{pmatrix} \cos{\theta} &amp; -\sin{\theta} \\
 <p>Negation (<span class="math inline">\(\ominus\)</span>) is a matrix inverse.</p>
 <p>Vector transformation (<span class="math inline">\(\cdot\)</span>) is a matrix-vector product.</p>
 <p><span class="math display">\[\xi\cdot p \rightarrow \boldsymbol{T} \widetilde{p}\]</span></p>
+<hr />
 <h1 id="d-geometry-1">3D Geometry</h1>
 <hr />
 <h2 id="relative-pose-in-3d">Relative pose in 3D</h2>
@@ -321,6 +328,7 @@ where } ^A\mathbf{R}_B = \begin{pmatrix} \cos{\theta} &amp; -\sin{\theta} \\
 <img src="images/3d-geometry-14-homo_trans.PNG" alt="homogeneous transform matrix" /><figcaption>homogeneous transform matrix</figcaption>
 </figure>
 <p>Using the rotation matrix avoids singularity’s, unlike the Euler and fixed angle approaches.</p>
+<hr />
 <h1 id="forward-kinematics">Forward Kinematics</h1>
 <hr />
 <h2 id="types-of-robots">Types of Robots</h2>
@@ -396,11 +404,12 @@ where } ^A\mathbf{R}_B = \begin{pmatrix} \cos{\theta} &amp; -\sin{\theta} \\
 <h3 id="parameter-table">Parameter Table</h3>
 <p>A table is used to represent each of the DH parameters for each joint.</p>
 <p>A good way to remember how to find each of the parameters is to use the following table.</p>
-<p><img src="images/foward-kinematics-09-tutorial.png" /></p>
+<p><img src="images/forward-kinematics-09-tutorial.png" /></p>
 <hr />
 <h2 id="base-and-tool-transforms">Base and tool transforms</h2>
 <p>In reality, we want the end point of the robot to be the end of whatever tool is attached to the robot. Need to apply a tool transform to the end pose of the robot.</p>
 <p>Also can apply a <em>base</em> transform to reposition or reorient the robot in space, i.e. flip the robot upside down etc.</p>
+<hr />
 <h1 id="inverse-kinematics">Inverse Kinematics</h1>
 <hr />
 <h2 id="inverse-kinematics-for-a-2-joint-robot-arm-using-geometry">Inverse Kinematics for a 2-Joint Robot Arm Using Geometry</h2>
@@ -472,6 +481,7 @@ where } ^A\mathbf{R}_B = \begin{pmatrix} \cos{\theta} &amp; -\sin{\theta} \\
 <ul>
 <li>although Cartesian interpolated motion is more computationally expensive</li>
 </ul>
+<hr />
 <h1 id="d-velocity-kinematics">2D Velocity Kinematics</h1>
 <hr />
 <h2 id="introduction-to-velocity-kinematics-in-2d">Introduction to Velocity Kinematics in 2D</h2>
@@ -561,5 +571,39 @@ where } ^A\mathbf{R}_B = \begin{pmatrix} \cos{\theta} &amp; -\sin{\theta} \\
 <h2 id="mapping-2d-spatial-velocity-between-coordinate-frames">Mapping 2D Spatial Velocity Between Coordinate Frames</h2>
 <p>The velocity of a point relative to coordinate frame A is related to its velocity relative to frame B by a Jacobian which is a function of the rotation from frame B to frame A.</p>
 <p><img src="images/2d-velocity-kinematics-08-coord.PNG" /></p>
+<hr />
+<h1 id="d-velocity-kinematics-1">3D Velocity Kinematics</h1>
+<hr />
+<h2 id="motion-in-3d">Motion in 3D</h2>
+<p>The spatial velocity <span class="math inline">\(\nu\)</span>, also called twist, is a vector of six parameters that describes the instantaneous velocity in 3D.</p>
+<p><span class="math display">\[\mathbf{\nu}=(\nu_x,\nu_y,\nu_z,\omega_x,\omega_y,\omega_z)\]</span></p>
+<p>Three of these elements describe the velocity of a point moving in 3D-space, and the other three describe the angular velocity of a body rotating in 3D-space.</p>
+<hr />
+<h2 id="velocity-of-6-joint-robot-arm---translation">Velocity of 6-Joint Robot Arm - Translation</h2>
+<p>For a 6-link robot, the previous approach to computing the Jacobian becomes unwieldy so a numerical approximation to the forward kinematic function is computed instead.</p>
+<p>Just like in when you learnt calculus</p>
+<p><img src="images/3d-velocity-kinematics-03-approx.PNG" /></p>
+<hr />
+<h2 id="skew-symmetric-matrices">Skew Symmetric Matrices</h2>
+<ul>
+<li>Also known as an anti symmetric matrix.</li>
+</ul>
+<p><span class="math display">\[\mathbf{S}^T=-\mathbf{S}\]</span> <span class="math display">\[\mathbf{S}^T+\mathbf{S}=0\]</span></p>
+<ul>
+<li><p>Always singular <span class="math display">\[det S = 0\]</span></p></li>
+<li><p>Any matrix is the sum of symmetric and a skew symmetric matrix</p></li>
+<li><p>In 3 dimensions <img src="images/3d-velocity-kinematics-04-matrix.PNG" /></p></li>
+<li><p>An alternative way to express the vector cross product <span class="math inline">\(\mathbf{a} \times \mathbf{b}=\mathbf{S}(\mathbf{a})\mathbf{b}\)</span></p></li>
+</ul>
+<h3 id="other-properties">Other Properties</h3>
+<ul>
+<li>Zero diagonal</li>
+<li>Exclusion: row x, column y, the element must be a z</li>
+<li>Cyclic rotation (x,y,z,x,y,z,..)
+<ul>
+<li>sequential -&gt; positive: column x, row y; column z, row x</li>
+<li>non sequential -&gt; negative: column x, row z; column z, row y</li>
+</ul></li>
+</ul>
 </body>
 </html>

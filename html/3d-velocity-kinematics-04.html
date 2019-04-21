@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Skew Symmetric Matrices</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Skew Symmetric Matrices</h1>
+</header>
+<ul>
+<li>Also known as an anti symmetric matrix.</li>
+</ul>
+<p><span class="math display">\[\mathbf{S}^T=-\mathbf{S}\]</span> <span class="math display">\[\mathbf{S}^T+\mathbf{S}=0\]</span></p>
+<ul>
+<li><p>Always singular <span class="math display">\[det S = 0\]</span></p></li>
+<li><p>Any matrix is the sum of symmetric and a skew symmetric matrix</p></li>
+<li><p>In 3 dimensions <img src="images/3d-velocity-kinematics-04-matrix.PNG" /></p></li>
+<li><p>An alternative way to express the vector cross product <span class="math inline">\(\mathbf{a} \times \mathbf{b}=\mathbf{S}(\mathbf{a})\mathbf{b}\)</span></p></li>
+</ul>
+<h2 id="other-properties">Other Properties</h2>
+<ul>
+<li>Zero diagonal</li>
+<li>Exclusion: row x, column y, the element must be a z</li>
+<li>Cyclic rotation (x,y,z,x,y,z,..)
+<ul>
+<li>sequential -&gt; positive: column x, row y; column z, row x</li>
+<li>non sequential -&gt; negative: column x, row z; column z, row y</li>
+</ul></li>
+</ul>
+</body>
+</html>
