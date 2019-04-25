@@ -1,4 +1,4 @@
-   body,p,select,textarea {
+body,p,select,textarea {
  color:#222;
  font-family:"Palatino Linotype","Book Antiqua",Palatino,serif;
  font-size:16px;
@@ -13,26 +13,20 @@ h1,h2,h3,h4,h5,h6 {
  text-transform:none;
 }
 h1 {
- font-size:26px;
- color:#42213a;
+ font-size:32px;
 }
 h2 {
  font-size:24px;
- color:#42213a;
 }
 h3 {
- font-size:22px;
- color:#42213a;
+ font-size:20px;
 }
 h4 {
- font-size:20px;
- color:#42213a;
+ font-size:16px;
 }
 h5 {
- font-size:18px;
- color:#42213a;
+ font-size:14px;
 }
 h6 {
- font-size:16px;
- color:#42213a;
+ font-size:13.6px;
 }
