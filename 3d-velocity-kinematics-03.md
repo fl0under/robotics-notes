@@ -27,11 +27,11 @@ This can be found by multiplying the partial derivative of the robots position w
 
 $$\frac{\partial\mathbf{t}}{\partial q_1} \frac{dq_1}{dt} = \frac{d\mathbf{t}}{dt}$$
 
-The end-effectors translational velocity, $\frac{d\mathbf{t}}{dt}$, can be expressed as $\begin{pmatrix} \dot{x} \\ \dot{y} \\ \dot{z} \end{pmatrix}$ or $\begin{pmatrix} \nu_x \\ \nu_y \\ \nu_z \end{pmatrix}$.
+The end-effectors translational velocity, $\frac{d\mathbf{t}}{dt}$, can be expressed as $\begin{pmatrix} \dot{x} \\ \dot{y} \\ \dot{z} \end{pmatrix}$ or $\begin{pmatrix} \v_x \\ \v_y \\ \v_z \end{pmatrix}$.
 
 Should end with an expression like
 
-$$\begin{pmatrix} \nu_x \\ \nu_y \\ \nu_z \end{pmatrix} \approx \begin{pmatrix} ? \\ ? \\ ? \end{pmatrix} \dot{q_1}$$
+$$\begin{pmatrix} \v_x \\ \v_y \\ \v_z \end{pmatrix} \approx \begin{pmatrix} ? \\ ? \\ ? \end{pmatrix} \dot{q_1}$$
 
 ### Rotation
 

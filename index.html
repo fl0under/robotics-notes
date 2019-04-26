@@ -597,9 +597,9 @@ where } ^A\mathbf{R}_B = \begin{pmatrix} \cos{\theta} &amp; -\sin{\theta} \\
 <p>Well this can also be said to be <em>the rate of change of translation with respect to time</em>.</p>
 <p>This can be found by multiplying the partial derivative of the robots position with respect to <span class="math inline">\(q_1\)</span> and the rate of change of <span class="math inline">\(q_1\)</span> with respect to time.</p>
 <p><span class="math display">\[\frac{\partial\mathbf{t}}{\partial q_1} \frac{dq_1}{dt} = \frac{d\mathbf{t}}{dt}\]</span></p>
-<p>The end-effectors translational velocity, <span class="math inline">\(\frac{d\mathbf{t}}{dt}\)</span>, can be expressed as <span class="math inline">\(\begin{pmatrix} \dot{x} \\ \dot{y} \\ \dot{z} \end{pmatrix}\)</span> or <span class="math inline">\(\begin{pmatrix} \nu_x \\ \nu_y \\ \nu_z \end{pmatrix}\)</span>.</p>
+<p>The end-effectors translational velocity, <span class="math inline">\(\frac{d\mathbf{t}}{dt}\)</span>, can be expressed as <span class="math inline">\(\begin{pmatrix} \dot{x} \\ \dot{y} \\ \dot{z} \end{pmatrix}\)</span> or <span class="math inline">\(\begin{pmatrix} \v_x \\ \v_y \\ \v_z \end{pmatrix}\)</span>.</p>
 <p>Should end with an expression like</p>
-<p><span class="math display">\[\begin{pmatrix} \nu_x \\ \nu_y \\ \nu_z \end{pmatrix} \approx \begin{pmatrix} ? \\ ? \\ ? \end{pmatrix} \dot{q_1}\]</span></p>
+<p><span class="math display">\[\begin{pmatrix} \v_x \\ \v_y \\ \v_z \end{pmatrix} \approx \begin{pmatrix} ? \\ ? \\ ? \end{pmatrix} \dot{q_1}\]</span></p>
 <h4 id="rotation">Rotation</h4>
 <p>The same can be done for the rotational part with some differences.</p>
 <p>Using <span class="math inline">\(\frac{\partial\mathbf{R}}{\partial q_1}\)</span> from step 4,</p>
@@ -639,9 +639,9 @@ where } ^A\mathbf{R}_B = \begin{pmatrix} \cos{\theta} &amp; -\sin{\theta} \\
 <p><span class="math display">\[\begin{pmatrix} \omega_x \\ \omega_y \\ \omega_z \end{pmatrix} \approx \begin{pmatrix} ? \\ ? \\ ? \end{pmatrix} \dot{q_1}\]</span></p>
 <h3 id="combining-translation-and-rotation">Combining Translation and Rotation</h3>
 <p>Simply stack the translation and rotation vectors on top of each other to get the relationship between the spatial velocity and the velocity of the robots first joint angle.</p>
-<p><span class="math display">\[\begin{pmatrix} \nu_x \\ \nu_y \\ \nu_z \\ \omega_x \\ \omega_y \\ \omega_z \end{pmatrix} \approx \begin{pmatrix} ? \\ ? \\ ? \\ ? \\ ? \\ ? \end{pmatrix} \dot{q_1}\]</span></p>
+<p><span class="math display">\[\begin{pmatrix} \v_x \\ \v_y \\ \v_z \\ \omega_x \\ \omega_y \\ \omega_z \end{pmatrix} \approx \begin{pmatrix} ? \\ ? \\ ? \\ ? \\ ? \\ ? \end{pmatrix} \dot{q_1}\]</span></p>
 <h4 id="repeat-for-all-joints">Repeat for all joints</h4>
-<p><span class="math display">\[\begin{pmatrix} \nu_x \\ \nu_y \\ \nu_z \\ \omega_x \\ \omega_y \\ \omega_z \end{pmatrix} \approx \text{[6x6 matrix] } \begin {pmatrix} \dot{q_1}\\\dot{q_2}\\\dot{q_3}\\\dot{q_4}\\\dot{q_5}\\\dot{q_6} \end{pmatrix}\]</span></p>
+<p><span class="math display">\[\begin{pmatrix} \v_x \\ \v_y \\ \v_z \\ \omega_x \\ \omega_y \\ \omega_z \end{pmatrix} \approx \text{[6x6 matrix] } \begin {pmatrix} \dot{q_1}\\\dot{q_2}\\\dot{q_3}\\\dot{q_4}\\\dot{q_5}\\\dot{q_6} \end{pmatrix}\]</span></p>
 <p>The 6x6 matrix is a Jacobian matrix, referred to as the manipulator Jacobian matrix.</p>
 <p>Can alternatively express this as <span class="math inline">\(\nu = \mathbf{J}(\mathbf{q})\mathbf{\dot{q}}\)</span>.</p>
 <p>Each column of the Jacobian matrix is the contribution by the robots joint <span class="math inline">\(i\)</span> to the end-effectors spatial velocity. Add them together to get the total end-effector spatial velocity.</p>

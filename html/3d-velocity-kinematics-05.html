@@ -31,9 +31,9 @@
 <p><span class="math display">\[\begin{pmatrix} \omega_x \\ \omega_y \\ \omega_z \end{pmatrix} \approx \begin{pmatrix} ? \\ ? \\ ? \end{pmatrix} \dot{q_1}\]</span></p>
 <h2 id="combining-translation-and-rotation">Combining Translation and Rotation</h2>
 <p>Simply stack the translation and rotation vectors on top of each other to get the relationship between the spatial velocity and the velocity of the robots first joint angle.</p>
-<p><span class="math display">\[\begin{pmatrix} \nu_x \\ \nu_y \\ \nu_z \\ \omega_x \\ \omega_y \\ \omega_z \end{pmatrix} \approx \begin{pmatrix} ? \\ ? \\ ? \\ ? \\ ? \\ ? \end{pmatrix} \dot{q_1}\]</span></p>
+<p><span class="math display">\[\begin{pmatrix} \v_x \\ \v_y \\ \v_z \\ \omega_x \\ \omega_y \\ \omega_z \end{pmatrix} \approx \begin{pmatrix} ? \\ ? \\ ? \\ ? \\ ? \\ ? \end{pmatrix} \dot{q_1}\]</span></p>
 <h3 id="repeat-for-all-joints">Repeat for all joints</h3>
-<p><span class="math display">\[\begin{pmatrix} \nu_x \\ \nu_y \\ \nu_z \\ \omega_x \\ \omega_y \\ \omega_z \end{pmatrix} \approx \text{[6x6 matrix] } \begin {pmatrix} \dot{q_1}\\\dot{q_2}\\\dot{q_3}\\\dot{q_4}\\\dot{q_5}\\\dot{q_6} \end{pmatrix}\]</span></p>
+<p><span class="math display">\[\begin{pmatrix} \v_x \\ \v_y \\ \v_z \\ \omega_x \\ \omega_y \\ \omega_z \end{pmatrix} \approx \text{[6x6 matrix] } \begin {pmatrix} \dot{q_1}\\\dot{q_2}\\\dot{q_3}\\\dot{q_4}\\\dot{q_5}\\\dot{q_6} \end{pmatrix}\]</span></p>
 <p>The 6x6 matrix is a Jacobian matrix, referred to as the manipulator Jacobian matrix.</p>
 <p>Can alternatively express this as <span class="math inline">\(\nu = \mathbf{J}(\mathbf{q})\mathbf{\dot{q}}\)</span>.</p>
 <p>Each column of the Jacobian matrix is the contribution by the robots joint <span class="math inline">\(i\)</span> to the end-effectors spatial velocity. Add them together to get the total end-effector spatial velocity.</p>
