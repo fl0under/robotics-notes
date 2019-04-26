@@ -76,6 +76,7 @@
 <li><a href="#motion-in-3d">Motion in 3D</a></li>
 <li><a href="#velocity-of-6-joint-robot-arm---translation">Velocity of 6-Joint Robot Arm - Translation</a></li>
 <li><a href="#skew-symmetric-matrices">Skew Symmetric Matrices</a></li>
+<li><a href="#velocity-of-6-joint-robot-arm---rotation">Velocity of 6-Joint Robot Arm - Rotation</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -581,8 +582,29 @@ where } ^A\mathbf{R}_B = \begin{pmatrix} \cos{\theta} &amp; -\sin{\theta} \\
 <hr />
 <h2 id="velocity-of-6-joint-robot-arm---translation">Velocity of 6-Joint Robot Arm - Translation</h2>
 <p>For a 6-link robot, the previous approach to computing the Jacobian becomes unwieldy so a numerical approximation to the forward kinematic function is computed instead.</p>
-<p>Just like in when you learnt calculus</p>
+<p>Just like when you learnt calculus</p>
 <p><img src="images/3d-velocity-kinematics-03-approx.PNG" /></p>
+<p>The derivative is approximated by calculating a finite difference.</p>
+<ol type="1">
+<li>Find the transformation matrix for some pose</li>
+<li>Then slightly displace <strong>one</strong> of the joints and then calculate the transformation matrix. A slight displacement may be 0.01 rad <span class="math inline">\(\approx\)</span> 0.5 deg, not too small or hardware might become inaccurate.</li>
+<li>Then <span class="math inline">\(\frac{\partial T}{\partial q_1} \approx \frac{\mathbf{T(q)} - \mathbf{T(q&#39;)}}{displacement_of_joint_1}\)</span></li>
+<li>From this it is easy to extract out the parts that correspond to the partial derivative of the rotation matrix with respect to joint angle 1, <span class="math inline">\(\frac{\partial\mathbf{R}}{\partial q_1}\)</span>, and similarly for the translation portion, <span class="math inline">\(\frac{\partial\mathbf{t}}{\partial q_1}\)</span>.</li>
+</ol>
+<h3 id="what-about-the-end-effector">What About the End-Effector?</h3>
+<h4 id="translation">Translation</h4>
+<p>What to do if you want to find the end-effectors <strong>translational velocity</strong>?</p>
+<p>Well this can also be said to be <em>the rate of change of translation with respect to time</em>.</p>
+<p>This can be found by multiplying the partial derivative of the robots position with respect to <span class="math inline">\(q_1\)</span> and the rate of change of <span class="math inline">\(q_1\)</span> with respect to time.</p>
+<p><span class="math display">\[\frac{\partial\mathbf{t}}{\partial q_1} \frac{dq_1}{dt} = \frac{d\mathbf{t}}{dt}\]</span></p>
+<p>The end-effectors translational velocity, <span class="math inline">\(\frac{d\mathbf{t}}{dt}\)</span>, can be expressed as <span class="math inline">\(\begin{pmatrix} \dot{x} \\ \dot{y} \\ \dot{z} \end{pmatrix}\)</span> or <span class="math inline">\(\begin{pmatrix} \nu_x \\ \nu_y \\ \nu_z \end{pmatrix}\)</span>.</p>
+<p>Should end with an expression like</p>
+<p><span class="math display">\[\begin{pmatrix} \nu_x \\ \nu_y \\ \nu_z \end{pmatrix} \approx \begin{pmatrix} ? \\ ? \\ ? \end{pmatrix} \dot{q_1}\]</span></p>
+<h4 id="rotation">Rotation</h4>
+<p>The same can be done for the rotational part with some differences.</p>
+<p>Using <span class="math inline">\(\frac{\partial\mathbf{R}}{\partial q_1}\)</span> from step 4,</p>
+<p><span class="math display">\[\frac{\partial\mathbf{R}}{\partial q_1} \frac{dq_1}{dt} = \frac{d\mathbf{R}}{dt}\]</span></p>
+<p>Note that <span class="math inline">\(\mathbf{\dot{R}}=\mathbf{S}(\omega)\mathbf{R}\)</span>, where <span class="math inline">\(\mathbf{S}(\omega)\)</span> is the skew symmetric matrix.</p>
 <hr />
 <h2 id="skew-symmetric-matrices">Skew Symmetric Matrices</h2>
 <ul>
@@ -605,5 +627,23 @@ where } ^A\mathbf{R}_B = \begin{pmatrix} \cos{\theta} &amp; -\sin{\theta} \\
 <li>non sequential -&gt; negative: column x, row z; column z, row y</li>
 </ul></li>
 </ul>
+<hr />
+<h2 id="velocity-of-6-joint-robot-arm---rotation">Velocity of 6-Joint Robot Arm - Rotation</h2>
+<p>Continuing on from <a href="#rotation">the translational section above</a>, we have to rearrange the expression</p>
+<p><span class="math display">\[\frac{\partial\mathbf{R}}{\partial q_1} \frac{dq_1}{dt} = \frac{d\mathbf{R}}{dt}\]</span></p>
+<p>to get <span class="math inline">\(\mathbf{S}(\omega)\)</span>.</p>
+<p>Take the inverse of <span class="math inline">\(\mathbf{R}\)</span> (which is the same as the transpose for a rotation matrix) to get</p>
+<p><span class="math display">\[\mathbf{S}(\omega) = \frac{\partial\mathbf{R}}{\partial q_1} \mathbf{R}^T \dot{q_1}\]</span></p>
+<p>then compute numerically.</p>
+<p>Then using our knowledge of skew symmetric matrix properties, can find <span class="math inline">\(\omega_x\)</span>, <span class="math inline">\(\omega_y\)</span> and <span class="math inline">\(\omega_z\)</span>, then rewrite it in matrix form as</p>
+<p><span class="math display">\[\begin{pmatrix} \omega_x \\ \omega_y \\ \omega_z \end{pmatrix} \approx \begin{pmatrix} ? \\ ? \\ ? \end{pmatrix} \dot{q_1}\]</span></p>
+<h3 id="combining-translation-and-rotation">Combining Translation and Rotation</h3>
+<p>Simply stack the translation and rotation vectors on top of each other to get the relationship between the spatial velocity and the velocity of the robots first joint angle.</p>
+<p><span class="math display">\[\begin{pmatrix} \nu_x \\ \nu_y \\ \nu_z \\ \omega_x \\ \omega_y \\ \omega_z \end{pmatrix} \approx \begin{pmatrix} ? \\ ? \\ ? \\ ? \\ ? \\ ? \end{pmatrix} \dot{q_1}\]</span></p>
+<h4 id="repeat-for-all-joints">Repeat for all joints</h4>
+<p><span class="math display">\[\begin{pmatrix} \nu_x \\ \nu_y \\ \nu_z \\ \omega_x \\ \omega_y \\ \omega_z \end{pmatrix} \approx \text{[6x6 matrix] } \begin {pmatrix} \dot{q_1}\\\dot{q_2}\\\dot{q_3}\\\dot{q_4}\\\dot{q_5}\\\dot{q_6} \end{pmatrix}\]</span></p>
+<p>The 6x6 matrix is a Jacobian matrix, referred to as the manipulator Jacobian matrix.</p>
+<p>Can alternatively express this as <span class="math inline">\(\nu = \mathbf{J}(\mathbf{q})\mathbf{\dot{q}}\)</span>.</p>
+<p>Each column of the Jacobian matrix is the contribution by the robots joint <span class="math inline">\(i\)</span> to the end-effectors spatial velocity. Add them together to get the total end-effector spatial velocity.</p>
 </body>
 </html>

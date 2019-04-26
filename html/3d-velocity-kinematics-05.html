@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Velocity of 6-Joint Robot Arm - Rotation</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Velocity of 6-Joint Robot Arm - Rotation</h1>
+</header>
+<p>Continuing on from <a href="#rotation">the translational section above</a>, we have to rearrange the expression</p>
+<p><span class="math display">\[\frac{\partial\mathbf{R}}{\partial q_1} \frac{dq_1}{dt} = \frac{d\mathbf{R}}{dt}\]</span></p>
+<p>to get <span class="math inline">\(\mathbf{S}(\omega)\)</span>.</p>
+<p>Take the inverse of <span class="math inline">\(\mathbf{R}\)</span> (which is the same as the transpose for a rotation matrix) to get</p>
+<p><span class="math display">\[\mathbf{S}(\omega) = \frac{\partial\mathbf{R}}{\partial q_1} \mathbf{R}^T \dot{q_1}\]</span></p>
+<p>then compute numerically.</p>
+<p>Then using our knowledge of skew symmetric matrix properties, can find <span class="math inline">\(\omega_x\)</span>, <span class="math inline">\(\omega_y\)</span> and <span class="math inline">\(\omega_z\)</span>, then rewrite it in matrix form as</p>
+<p><span class="math display">\[\begin{pmatrix} \omega_x \\ \omega_y \\ \omega_z \end{pmatrix} \approx \begin{pmatrix} ? \\ ? \\ ? \end{pmatrix} \dot{q_1}\]</span></p>
+<h2 id="combining-translation-and-rotation">Combining Translation and Rotation</h2>
+<p>Simply stack the translation and rotation vectors on top of each other to get the relationship between the spatial velocity and the velocity of the robots first joint angle.</p>
+<p><span class="math display">\[\begin{pmatrix} \nu_x \\ \nu_y \\ \nu_z \\ \omega_x \\ \omega_y \\ \omega_z \end{pmatrix} \approx \begin{pmatrix} ? \\ ? \\ ? \\ ? \\ ? \\ ? \end{pmatrix} \dot{q_1}\]</span></p>
+<h3 id="repeat-for-all-joints">Repeat for all joints</h3>
+<p><span class="math display">\[\begin{pmatrix} \nu_x \\ \nu_y \\ \nu_z \\ \omega_x \\ \omega_y \\ \omega_z \end{pmatrix} \approx \text{[6x6 matrix] } \begin {pmatrix} \dot{q_1}\\\dot{q_2}\\\dot{q_3}\\\dot{q_4}\\\dot{q_5}\\\dot{q_6} \end{pmatrix}\]</span></p>
+<p>The 6x6 matrix is a Jacobian matrix, referred to as the manipulator Jacobian matrix.</p>
+<p>Can alternatively express this as <span class="math inline">\(\nu = \mathbf{J}(\mathbf{q})\mathbf{\dot{q}}\)</span>.</p>
+<p>Each column of the Jacobian matrix is the contribution by the robots joint <span class="math inline">\(i\)</span> to the end-effectors spatial velocity. Add them together to get the total end-effector spatial velocity.</p>
+</body>
+</html>
