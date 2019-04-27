@@ -22,11 +22,11 @@ $$\begin{pmatrix} \omega_x \\ \omega_y \\ \omega_z \end{pmatrix} \approx \begin{
 
 Simply stack the translation and rotation vectors on top of each other to get the relationship between the spatial velocity and the velocity of the robots first joint angle.
 
-$$\begin{pmatrix} \v_x \\ \v_y \\ \v_z \\ \omega_x \\ \omega_y \\ \omega_z \end{pmatrix} \approx \begin{pmatrix} ? \\ ? \\ ? \\ ? \\ ? \\ ? \end{pmatrix} \dot{q_1}$$
+$$\begin{pmatrix} v_x \\ v_y \\ v_z \\ \omega_x \\ \omega_y \\ \omega_z \end{pmatrix} \approx \begin{pmatrix} ? \\ ? \\ ? \\ ? \\ ? \\ ? \end{pmatrix} \dot{q_1}$$
 
 ### Repeat for all joints
 
-$$\begin{pmatrix} \v_x \\ \v_y \\ \v_z \\ \omega_x \\ \omega_y \\ \omega_z \end{pmatrix} \approx \text{[6x6 matrix] } \begin {pmatrix} \dot{q_1}\\\dot{q_2}\\\dot{q_3}\\\dot{q_4}\\\dot{q_5}\\\dot{q_6} \end{pmatrix}$$
+$$\begin{pmatrix} v_x \\ v_y \\ v_z \\ \omega_x \\ \omega_y \\ \omega_z \end{pmatrix} \approx \text{[6x6 matrix] } \begin {pmatrix} \dot{q_1}\\\dot{q_2}\\\dot{q_3}\\\dot{q_4}\\\dot{q_5}\\\dot{q_6} \end{pmatrix}$$
 
 The 6x6 matrix is a Jacobian matrix, referred to as the manipulator Jacobian matrix.
 

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Velocity Ellipsoid in 3D and Manipulability</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Velocity Ellipsoid in 3D and Manipulability</h1>
+</header>
+<p>Similar to the <a href="#velocity-ellipse-in-2d">2D case</a>.</p>
+<p>The Jacobian can be used as a diagnostic tool to find out how well the robot’s configuration is suited to the task.</p>
+<p>If two columns of the Jacobian are the same, say columns 4 and 6, then the Jacobian is singular (the motion of joints 4 and 6 results in the same motion).</p>
+<ul>
+<li>The Jacobian is no longer full rank. Rank 5 instead of Rank 6.</li>
+</ul>
+<p>If the ellipsoid is a sphere</p>
+<ul>
+<li>motion is <strong>isotropic</strong></li>
+<li>equal in all directions</li>
+</ul>
+<h2 id="manipulability">Manipulability</h2>
+<p>Manipulability is defined as</p>
+<p><span class="math display">\[ m=\frac{\min R}{\max R}, 0 \leq m \leq 1\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(m=1\)</span> : isotropic motion</li>
+<li><span class="math inline">\(m=0\)</span> : the ellipsoid is an ellipse, motion in one Cartesian direction is not possible</li>
+</ul>
+</body>
+</html>

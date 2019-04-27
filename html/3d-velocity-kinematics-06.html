@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Inverting the Jacobian Matrix (3D)</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Inverting the Jacobian Matrix (3D)</h1>
+</header>
+<p>The Jacobian matrix can be inverted so long it is</p>
+<ul>
+<li>square,</li>
+<li>and not singular.</li>
+</ul>
+<p>(see <a href="#inverting-the-jacobian-matrix">here</a>)</p>
+<p>The inverse Jacobian allows us to determine the joint velocity given the end-effector velocity.</p>
+<h2 id="resolved-rate-motion-control">Resolved Rate Motion Control</h2>
+<p>This technique is same as for the <a href="#resolved-rate-motion-control-in-2d">2D situation</a> except the joint velocity is computed as <span class="math inline">\(\mathbf{\dot{q}}=\mathbf{J}(\mathbf{q}_k)^{-1}\nu\)</span></p>
+</body>
+</html>

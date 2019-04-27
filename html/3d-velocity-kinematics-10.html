@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Jacobian and Number of Robot Joints</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Jacobian and Number of Robot Joints</h1>
+</header>
+<p>Jacobian: 6 rows, N columns (number of joints)</p>
+<h1 id="fully-actuated">Fully Actuated</h1>
+<ul>
+<li>Full motion in workspace</li>
+<li>Jacobian is square</li>
+</ul>
+<h1 id="under-actuated">Under Actuated</h1>
+<ul>
+<li>Limited motion</li>
+<li>Remove the unused spatial degrees of freedom so Jacobian becomes square</li>
+</ul>
+<h1 id="over-actuated">Over Actuated</h1>
+<ul>
+<li>Full motion in workspace</li>
+<li>Jacobian: more columns than rows
+<ul>
+<li>Use pseudo inverse</li>
+</ul></li>
+<li>Has spare joints</li>
+<li>Can do null-space motion
+<ul>
+<li>Move arm while keeping end-effector steady</li>
+</ul></li>
+</ul>
+</body>
+</html>

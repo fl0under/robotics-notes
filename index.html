@@ -77,6 +77,14 @@
 <li><a href="#velocity-of-6-joint-robot-arm---translation">Velocity of 6-Joint Robot Arm - Translation</a></li>
 <li><a href="#skew-symmetric-matrices">Skew Symmetric Matrices</a></li>
 <li><a href="#velocity-of-6-joint-robot-arm---rotation">Velocity of 6-Joint Robot Arm - Rotation</a></li>
+<li><a href="#inverting-the-jacobian-matrix-3d">Inverting the Jacobian Matrix (3D)</a></li>
+<li><a href="#velocity-ellipsoid-in-3d-and-manipulability">Velocity Ellipsoid in 3D and Manipulability</a></li>
+<li><a href="#mapping-3d-spatial-velocity-between-coordinate-frame">Mapping 3D Spatial Velocity Between Coordinate Frame</a></li>
+<li><a href="#the-analytic-jacobian">The Analytic Jacobian</a></li>
+<li><a href="#jacobian-and-number-of-robot-joints">Jacobian and Number of Robot Joints</a></li>
+<li><a href="#fully-actuated">Fully Actuated</a></li>
+<li><a href="#under-actuated">Under Actuated</a></li>
+<li><a href="#over-actuated">Over Actuated</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -597,9 +605,9 @@ where } ^A\mathbf{R}_B = \begin{pmatrix} \cos{\theta} &amp; -\sin{\theta} \\
 <p>Well this can also be said to be <em>the rate of change of translation with respect to time</em>.</p>
 <p>This can be found by multiplying the partial derivative of the robots position with respect to <span class="math inline">\(q_1\)</span> and the rate of change of <span class="math inline">\(q_1\)</span> with respect to time.</p>
 <p><span class="math display">\[\frac{\partial\mathbf{t}}{\partial q_1} \frac{dq_1}{dt} = \frac{d\mathbf{t}}{dt}\]</span></p>
-<p>The end-effectors translational velocity, <span class="math inline">\(\frac{d\mathbf{t}}{dt}\)</span>, can be expressed as <span class="math inline">\(\begin{pmatrix} \dot{x} \\ \dot{y} \\ \dot{z} \end{pmatrix}\)</span> or <span class="math inline">\(\begin{pmatrix} \v_x \\ \v_y \\ \v_z \end{pmatrix}\)</span>.</p>
+<p>The end-effectors translational velocity, <span class="math inline">\(\frac{d\mathbf{t}}{dt}\)</span>, can be expressed as <span class="math inline">\(\begin{pmatrix} \dot{x} \\ \dot{y} \\ \dot{z} \end{pmatrix}\)</span> or <span class="math inline">\(\begin{pmatrix} v_x \\ v_y \\ v_z \end{pmatrix}\)</span>.</p>
 <p>Should end with an expression like</p>
-<p><span class="math display">\[\begin{pmatrix} \v_x \\ \v_y \\ \v_z \end{pmatrix} \approx \begin{pmatrix} ? \\ ? \\ ? \end{pmatrix} \dot{q_1}\]</span></p>
+<p><span class="math display">\[\begin{pmatrix} v_x \\ v_y \\ v_z \end{pmatrix} \approx \begin{pmatrix} ? \\ ? \\ ? \end{pmatrix} \dot{q_1}\]</span></p>
 <h4 id="rotation">Rotation</h4>
 <p>The same can be done for the rotational part with some differences.</p>
 <p>Using <span class="math inline">\(\frac{\partial\mathbf{R}}{\partial q_1}\)</span> from step 4,</p>
@@ -639,11 +647,84 @@ where } ^A\mathbf{R}_B = \begin{pmatrix} \cos{\theta} &amp; -\sin{\theta} \\
 <p><span class="math display">\[\begin{pmatrix} \omega_x \\ \omega_y \\ \omega_z \end{pmatrix} \approx \begin{pmatrix} ? \\ ? \\ ? \end{pmatrix} \dot{q_1}\]</span></p>
 <h3 id="combining-translation-and-rotation">Combining Translation and Rotation</h3>
 <p>Simply stack the translation and rotation vectors on top of each other to get the relationship between the spatial velocity and the velocity of the robots first joint angle.</p>
-<p><span class="math display">\[\begin{pmatrix} \v_x \\ \v_y \\ \v_z \\ \omega_x \\ \omega_y \\ \omega_z \end{pmatrix} \approx \begin{pmatrix} ? \\ ? \\ ? \\ ? \\ ? \\ ? \end{pmatrix} \dot{q_1}\]</span></p>
+<p><span class="math display">\[\begin{pmatrix} v_x \\ v_y \\ v_z \\ \omega_x \\ \omega_y \\ \omega_z \end{pmatrix} \approx \begin{pmatrix} ? \\ ? \\ ? \\ ? \\ ? \\ ? \end{pmatrix} \dot{q_1}\]</span></p>
 <h4 id="repeat-for-all-joints">Repeat for all joints</h4>
-<p><span class="math display">\[\begin{pmatrix} \v_x \\ \v_y \\ \v_z \\ \omega_x \\ \omega_y \\ \omega_z \end{pmatrix} \approx \text{[6x6 matrix] } \begin {pmatrix} \dot{q_1}\\\dot{q_2}\\\dot{q_3}\\\dot{q_4}\\\dot{q_5}\\\dot{q_6} \end{pmatrix}\]</span></p>
+<p><span class="math display">\[\begin{pmatrix} v_x \\ v_y \\ v_z \\ \omega_x \\ \omega_y \\ \omega_z \end{pmatrix} \approx \text{[6x6 matrix] } \begin {pmatrix} \dot{q_1}\\\dot{q_2}\\\dot{q_3}\\\dot{q_4}\\\dot{q_5}\\\dot{q_6} \end{pmatrix}\]</span></p>
 <p>The 6x6 matrix is a Jacobian matrix, referred to as the manipulator Jacobian matrix.</p>
 <p>Can alternatively express this as <span class="math inline">\(\nu = \mathbf{J}(\mathbf{q})\mathbf{\dot{q}}\)</span>.</p>
 <p>Each column of the Jacobian matrix is the contribution by the robots joint <span class="math inline">\(i\)</span> to the end-effectors spatial velocity. Add them together to get the total end-effector spatial velocity.</p>
+<hr />
+<h2 id="inverting-the-jacobian-matrix-3d">Inverting the Jacobian Matrix (3D)</h2>
+<p>The Jacobian matrix can be inverted so long it is</p>
+<ul>
+<li>square,</li>
+<li>and not singular.</li>
+</ul>
+<p>(see <a href="#inverting-the-jacobian-matrix">here</a>)</p>
+<p>The inverse Jacobian allows us to determine the joint velocity given the end-effector velocity.</p>
+<h3 id="resolved-rate-motion-control">Resolved Rate Motion Control</h3>
+<p>This technique is same as for the <a href="#resolved-rate-motion-control-in-2d">2D situation</a> except the joint velocity is computed as <span class="math inline">\(\mathbf{\dot{q}}=\mathbf{J}(\mathbf{q}_k)^{-1}\nu\)</span></p>
+<hr />
+<h2 id="velocity-ellipsoid-in-3d-and-manipulability">Velocity Ellipsoid in 3D and Manipulability</h2>
+<p>Similar to the <a href="#velocity-ellipse-in-2d">2D case</a>.</p>
+<p>The Jacobian can be used as a diagnostic tool to find out how well the robot’s configuration is suited to the task.</p>
+<p>If two columns of the Jacobian are the same, say columns 4 and 6, then the Jacobian is singular (the motion of joints 4 and 6 results in the same motion).</p>
+<ul>
+<li>The Jacobian is no longer full rank. Rank 5 instead of Rank 6.</li>
+</ul>
+<p>If the ellipsoid is a sphere</p>
+<ul>
+<li>motion is <strong>isotropic</strong></li>
+<li>equal in all directions</li>
+</ul>
+<h3 id="manipulability">Manipulability</h3>
+<p>Manipulability is defined as</p>
+<p><span class="math display">\[ m=\frac{\min R}{\max R}, 0 \leq m \leq 1\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(m=1\)</span> : isotropic motion</li>
+<li><span class="math inline">\(m=0\)</span> : the ellipsoid is an ellipse, motion in one Cartesian direction is not possible</li>
+</ul>
+<hr />
+<h2 id="mapping-3d-spatial-velocity-between-coordinate-frame">Mapping 3D Spatial Velocity Between Coordinate Frame</h2>
+<p>(The-<a href="#mapping-2d-spatial-velocity-between-coordinate-frames">2D-case</a>)</p>
+<p><img src="images/3d-velocity-kinematics-08-transform.PNG" /></p>
+<p>The spatial velocity of a body relative to coordinate frame A is related to its velocity relative to frame B by a Jacobian which is a function of the rotation from frame B to frame A.</p>
+<p>We can use the spatial velocity transform to compute an alternative manipulator Jacobian matrix that maps joint velocity to end-effector spatial velocity in the end-effector coordinate frame.</p>
+<hr />
+<h2 id="the-analytic-jacobian">The Analytic Jacobian</h2>
+<p>The analytic Jacobian relates change in roll-pitch-yaw angles to angular velocity.</p>
+<p>We can re-express the spatial velocity using the analytic Jacobian <span class="math inline">\(\mathbf{J}_a\)</span>.</p>
+<p><img src="images/3d-velocity-kinematics-09-spatial.PNG" /></p>
+<p>where <span class="math inline">\(\mathbf{J}_a\)</span> is</p>
+<p><img src="images/3d-velocity-kinematics-09-analytic.PNG" /></p>
+<p>and</p>
+<p><img src="images/3d-velocity-kinematics-09-b.PNG" /></p>
+<hr />
+<h2 id="jacobian-and-number-of-robot-joints">Jacobian and Number of Robot Joints</h2>
+<p>Jacobian: 6 rows, N columns (number of joints)</p>
+<h2 id="fully-actuated">Fully Actuated</h2>
+<ul>
+<li>Full motion in workspace</li>
+<li>Jacobian is square</li>
+</ul>
+<h2 id="under-actuated">Under Actuated</h2>
+<ul>
+<li>Limited motion</li>
+<li>Remove the unused spatial degrees of freedom so Jacobian becomes square</li>
+</ul>
+<h2 id="over-actuated">Over Actuated</h2>
+<ul>
+<li>Full motion in workspace</li>
+<li>Jacobian: more columns than rows
+<ul>
+<li>Use pseudo inverse</li>
+</ul></li>
+<li>Has spare joints</li>
+<li>Can do null-space motion
+<ul>
+<li>Move arm while keeping end-effector steady</li>
+</ul></li>
+</ul>
 </body>
 </html>
